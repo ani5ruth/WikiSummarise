@@ -58,10 +58,4 @@ class Summarizer:
         threshold = 1.5 * sum(score_table.values())/len(score_table)
     
         return "".join(list(filter(lambda sentence: score_table.get(sentence, 0) >= threshold, score_table)))
-    
-    
-if __name__ == "__main__":
-    article = '''Peter and Elizabeth took a taxi to attend the night party in the city. While in the party, Elizabeth collapsed and was rushed to the hospital. Since she was diagnosed with a brain injury, the doctor told Peter to stay besides her until she gets well. Therefore, Peter stayed with her at the hospital for 3 days without leaving.'''
-    summarizer = Summarizer(article)
-    print(summarizer.get_article_summary())
 

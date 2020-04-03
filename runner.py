@@ -3,12 +3,16 @@ from summarizer import Summarizer
 
 
 if __name__ == '__main__':
-    keyword = input("Enter keyword of wikipedia article to summarize (eg. Covid-19): ")
+    while True:
+        keyword = input("\n\nEnter keyword of wikipedia article to summarize (eg. Covid-19) or type exit to quit: ")
+        
+        if keyword == "exit":
+            exit(1)
+            
+        article = get_article(keyword)
+        if article == None:
+            print("\n\nCould not find article matching keyword - " + keyword)
+            continue
 
-    article = get_article(keyword)
-    if article == None:
-        print("Could not find article matching keyword - " + keyword)
-        exit(1)
-
-    print("\n\nOriginal Artcile : "  + article['original'])
-    print("\n\nSummarised Article : \n" + Summarizer(article['text']).get_article_summary())
+        print("\n\nOriginal Artcile : "  + article['original'])
+        print("\n\nSummarised Article : \n" + Summarizer(article['text']).get_article_summary())

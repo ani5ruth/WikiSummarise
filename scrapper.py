@@ -18,16 +18,13 @@ def get_article(keyword):
     article_parsed = bs4.BeautifulSoup(article_content, 'html.parser')
 
     # find the original url of page 
-    url = URL + re.sub(r'\s+', '_', article_parsed.find('h1').text)
+    header = article_parsed.find('h1').text
+    url = URL + re.sub(r'\s+', '_', header)
 
     # concatinate all paragraphs and remove extra spaces and boxed numbers
-    article_text = "".join([p.text for p in article_parsed.find_all('p')])
+    paragraph = article_parsed.find_all('p')
+    article_text = "".join([p.text for p in paragraph])
     article_text = re.sub(r'\[[0-9]*\]', ' ', article_text)
     article_text = re.sub(r'\s+', ' ', article_text)
 
     return {'text' : article_text, 'original' : url}
-
-
-# test
-if __name__ == "__main__":
-    print(get_article("covid_19").get('original'))

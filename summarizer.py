@@ -6,7 +6,7 @@ from collections import Counter
 
 
 class Summarizer:
-    """Summarises given article using weighted-frequency algorithm"""
+    """Summarises given article using sentence-ranking algorithm"""
 
     def __init__(self, article):
 

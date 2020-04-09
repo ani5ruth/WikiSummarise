@@ -8,7 +8,6 @@ class Summarizer:
     """Summarises given article using sentence-ranking algorithm"""
 
     def __init__(self, article):
-
         self.article = article
         self.construct_stems()
         self.construct_sentences()
